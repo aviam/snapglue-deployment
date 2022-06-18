@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  gateway:
+    build: ./../gateway
+    image: yad2yad.online:5000/gateway:0.1.0 
+    ports:
+      - "4000:4000"
+    
+  snapglue_web:
+    build: ./../snapglue-web
+    image: yad2yad.online:5000/snapglue-web:0.1.0
+    ports:
+      - "3000:5000"
+    environment:
+      REACT_APP_GATEWAY_SERVER: "gateway"
